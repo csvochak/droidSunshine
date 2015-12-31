@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +18,8 @@ public class MainActivityFragment extends Fragment {
 
     public MainActivityFragment() {
     }
+
+    private ArrayAdapter forecastAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,9 +41,7 @@ public class MainActivityFragment extends Fragment {
         List<String> weekForecast = new ArrayList<String>(
                 Arrays.asList(forecastArray));
 
-
-
-        ArrayAdapter forecastAdapter = new ArrayAdapter<String>(
+        forecastAdapter = new ArrayAdapter<String>(
                 getActivity(),
                 R.layout.list_item_forecast,
                 R.id.list_item_forecast_textview,
@@ -53,7 +51,6 @@ public class MainActivityFragment extends Fragment {
         ListView forecastList;
         forecastList = (ListView)rootView.findViewById(R.id.listview_forecast);
         forecastList.setAdapter(forecastAdapter);
-
 
         return rootView;
     }
